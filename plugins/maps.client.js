@@ -84,7 +84,7 @@ export default function ({ $config }, inject) {
     measureTool.addListener('measure_end', ({ result }) => {
       //  TODO: save area
       // eslint-disable-next-line no-unused-vars
-      area = result.areaText
+      area = result.area
     })
   }
 

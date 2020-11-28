@@ -1,25 +1,28 @@
 <template>
   <section class="container m-auto">
     <div>
-      <label class="block text-gray-700 top-0 left-0 w-full px-3 py-2 leading-normal" for="area">
-        Powierzchnia
+      <label class="block text-gray-700 top-0 left-0 w-full py-2 leading-normal" :for="`${id}-area`">
+        {{ label }} (m²)
       </label>
       <input
-        id="area"
-        v-model="area"
+        :id="`${id}-area`"
+        :value="value"
         class="w-full py-2 px-3 text-gray-700 leading-normal rounded relative border rounded mb-4 shadow appearance-none label-floating"
-        type="text"
+        type="number"
+        @input="(e) => $emit('input', parseFloat(e.target.value))"
       >
-      <p v-if="!mapVisible" class="text-sm mb-2">
-        Jeśli nie znasz powierzchni skorzystaj z opcji <span class="font-bold">Zaznacz na mapie</span>
+      <p v-if="!mapVisible" class="text-xs mb-4">
+        Jeśli nie znasz powierzchni skorzystaj z opcji <span class="action-link" @click="initMap">Zaznacz na mapie</span>
       </p>
-      <p v-else class="text-sm mb-2">
-        Skorzystaj z wyszukiwarki lub opcji <span class="font-bold">Geolokacja</span>. Następnie zaznacz obszar i kliknij <span class="font-bold">Zatwierdź</span>
-      </p>
+      <ol v-else class="text-xs mb-4 list-decimal pl-4">
+        <li>Skorzystaj z wyszukiwarki lub <span class="action-link" @click="useGeolocation">uzyj geolokacji</span>.</li>
+        <li>Zaznacz obszar (PPM > <span class="italic">Measure distance</span>)</li>
+        <li>Kliknij <span class="font-bold">Zatwierdź</span></li>
+      </ol>
     </div>
     <div v-if="mapVisible">
       <input
-        id="autocomplete"
+        :id="`${id}-autocomplete`"
         ref="autocomplete"
         v-model="autocomplete"
         class="w-full py-2 px-3 text-gray-700 leading-normal rounded relative border rounded mb-4 shadow appearance-none label-floating"
@@ -28,16 +31,10 @@
       <div ref="map" class="w-full" style="height: 50vh" />
     </div>
     <div class="my-2">
-      <button class="bg-black hover:bg-black text-white py-2 px-4" type="button" @click="initMap">
-        Zaznacz na mapie
-      </button>
       <template v-if="mapVisible">
-        <button class="bg-black hover:bg-black text-white py-2 px-4" type="button" @click="useGeolocation">
-          Geolokacja
-        </button>
-        <button class="bg-black hover:bg-black text-white py-2 px-4" type="button" @click="getArea">
+        <app-button @click.native="getArea">
           Zatwierdź
-        </button>
+        </app-button>
       </template>
     </div>
   </section>
@@ -45,6 +42,21 @@
 
 <script>
 export default {
+  props: {
+    id: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    value: {
+      type: Number,
+      required: true
+    }
+  },
+
   data: () => ({
     area: null,
     mapVisible: false,
@@ -69,7 +81,7 @@ export default {
         alert('Zaznacz obszar')
         return
       }
-      this.area = area
+      this.$emit('input', area)
       this.mapVisible = false
     },
 
@@ -80,3 +92,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.action-link {
+  @apply font-bold underline text-blue-500 cursor-pointer;
+}
+</style>

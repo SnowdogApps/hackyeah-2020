@@ -1,7 +1,7 @@
 <template>
   <div class="app mb-8">
     <section class="font-sans container m-auto text-center py-8">
-      <h1 for="tagline" class="uppercase tracking-wide font-bold text-gray-700">
+      <h1 for="tagline" class="uppercase tracking-wide font-bold text-gray-700 border-b-2 border-gray-200 pb-4">
         Formularz profilujący
       </h1>
     </section>
@@ -24,29 +24,28 @@
 
     <user-form v-if="activeStep === 2" />
 
-    <div class="flex items-center justify-center mx-auto max-w-screen-sm mt-8">
-      <button
+    <div class="flex items-center justify-center mx-auto max-w-screen-sm mt-8 border-t-2 border-gray-200 pt-4">
+      <app-button
         v-if="activeStep !== 0"
-        class="bg-black hover:bg-black text-white py-2 px-4 mr-4"
-        type="button"
-        @click="prev"
+        class="mr-2"
+        @click.native="prev"
       >
         Wroc
-      </button>
+      </app-button>
 
-      <button
+      <app-button
         v-if="activeStep !== steps.length - 1 && activeStep !== 0"
-        class="bg-black hover:bg-black text-white py-2 px-4"
-        type="button"
-        @click=" next"
+        @click.native="next"
       >
         Dalej
-      </button>
+      </app-button>
     </div>
   </div>
 </template>
 
 <script>
+// import calculator from '~/utils/calculator'
+
 export default {
   layout: 'clean',
   data: () => ({
@@ -108,6 +107,11 @@ export default {
     },
     next () {
       this.activeStep++
+    },
+
+    submit () {
+      // lawnArea, gardenArea, peopleCount, roofArea, yearlyRainfall
+      // const result = calculator.
     }
   }
 }
