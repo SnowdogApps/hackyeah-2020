@@ -65,6 +65,10 @@ export default {
     getArea () {
       this.$maps.endMeasurement()
       const area = this.$maps.getMeasuredArea()
+      if (!area) {
+        alert('Zaznacz obszar')
+        return
+      }
       this.area = area
     },
 
