@@ -36,7 +36,9 @@
             <li><a href="#" class="sm:px-4 py-2 sm:hidden lg:block">About Us</a></li>
             <li><a href="#" class="sm:px-4 py-2 sm:hidden md:block">Resources</a></li>
             <li><a href="#" class="sm:px-4 py-2 sm:hidden md:block">FAQs</a></li>
-            <li><a href="#" class="sm:px-4 py-2 block text-blue-600 border border-gray-400 rounded-lg ml-4">Login</a></li>
+            <li>
+              <nuxt-link to="/login" class="sm:px-4 py-2 block text-blue-600 border border-gray-400 rounded-lg ml-4">Login</nuxt-link>
+            </li>
             <li><a href="#" class="sm:px-4 py-2 block bg-blue-600 text-white rounded-lg ml-4">Get Started</a></li>
           </ul>
         </div>
