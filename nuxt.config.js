@@ -49,6 +49,9 @@ export default {
   },
 
   publicRuntimeConfig: {
-    strapiUrl: process.env.STRAPI_URL || 'http://localhost:1337'
+    api: process.env.STRAPI_URL || 'http://localhost:1337',
+    axios: {
+      browserBaseURL: process.env.STRAPI_URL
+    }
   }
 }
