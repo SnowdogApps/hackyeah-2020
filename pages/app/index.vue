@@ -10,10 +10,7 @@
     <vertical-list heading="Produkty / usługi" :items="usage" @toggle="handleToggle" />
     <user-form />
 
-    <app-map />
-    <button class="bg-black hover:bg-black text-white py-2 px-4" type="button" @click="$maps.getMeasuredArea">
-      add
-    </button>
+    <area-map />
   </div>
 </template>
 

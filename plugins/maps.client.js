@@ -4,10 +4,11 @@ export default function ({ $config }, inject) {
   let mapWaiting = null
   let map = null
   let measureTool = null
+  let area = null
 
   addScript()
 
-  inject('maps', { showMap, getMeasuredArea })
+  inject('maps', { showMap, getMeasuredArea, endMeasurement })
 
   function addScript () {
     const script = document.createElement('script')
@@ -58,12 +59,17 @@ export default function ({ $config }, inject) {
     measureTool = new MeasureTool(map)
     measureTool.addListener('measure_end', ({ result }) => {
       //  TODO: save area
-      alert(result.areaText)
+      // eslint-disable-next-line no-unused-vars
+      area = result.areaText
     })
   }
 
-  function getMeasuredArea () {
+  function endMeasurement () {
     measureTool.end()
+  }
+
+  function getMeasuredArea () {
+    return area
   }
 
   // FALLBACK SOLUTION
