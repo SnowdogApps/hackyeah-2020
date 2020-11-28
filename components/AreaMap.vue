@@ -70,6 +70,7 @@ export default {
         return
       }
       this.area = area
+      this.mapVisible = false
     },
 
     useGeolocation () {

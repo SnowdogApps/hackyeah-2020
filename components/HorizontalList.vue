@@ -9,8 +9,9 @@
         v-for="(item, index) in items"
         :key="index"
         class="w-full sm:w-1/2 md:w-1/3 flex flex-col items-center justify-center p-4 hover:shadow-lg cursor-pointer"
+        @click="$emit('select', index)"
       >
-        <div class="w-14 h-14 rounded-full mr-4 bg-gray-300" alt="" />
+        <div :class="['rounded-full h-10 w-10 m-auto', item.selected ? 'bg-green-400' : 'bg-gray-300']" alt="" />
         <h2 class="my-4 font-medium">
           {{ item.name }}
         </h2>

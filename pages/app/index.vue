@@ -12,6 +12,7 @@
       v-if="activeStep === 0"
       heading="Typ zabudowy"
       :items="buildingTypes"
+      @select="selectBuilding"
     />
 
     <vertical-list
@@ -34,7 +35,7 @@
       </button>
 
       <button
-        v-if="activeStep !== steps.length - 1"
+        v-if="activeStep !== steps.length - 1 && activeStep !== 0"
         class="bg-black hover:bg-black text-white py-2 px-4"
         type="button"
         @click=" next"
@@ -59,15 +60,18 @@ export default {
     buildingTypes: [
       {
         name: 'Blok/kamienica',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.'
+        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
+        selected: false
       },
       {
         name: 'Dom',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.'
+        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
+        selected: false
       },
       {
         name: 'Gospodarstwo',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.'
+        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
+        selected: false
       }
     ],
     usage: [
@@ -92,6 +96,12 @@ export default {
   methods: {
     handleToggle (itemIndex) {
       this.usage[itemIndex].selected = !this.usage[itemIndex].selected
+    },
+    selectBuilding (index) {
+      this.buildingTypes.forEach((item, i) => {
+        item.selected = i === index
+      })
+      this.next()
     },
     prev () {
       this.activeStep--
