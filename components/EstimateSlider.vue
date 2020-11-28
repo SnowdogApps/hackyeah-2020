@@ -1,17 +1,35 @@
 <template>
-  <section>
+  <section class="container mx-auto my-8 flex flex-col items-center">
     <input
       v-model="percent"
       type="range"
       min="0"
       max="100"
+      class="md:w-1/2 my-4 w-2/3"
     >
 
-    {{ percent }}%
+    <div class="font-bold text-3xl mb-4">
+      {{ percent }}%
+    </div>
 
-    <p>{{ garden }} litry wody na podlewanie ogrodu</p>
-    <p>{{ money }} zł zaoszczedzone rocznie</p>
-    <p>{{ deep }} m3 wiecej w wodach głębinowych</p>
+    <p class="mb-2">
+      <span class="font-bold">
+        {{ garden }} litry
+      </span>
+      wody na podlewanie ogrodu
+    </p>
+    <p class="mb-2">
+      <span class="font-bold">
+        {{ money }} zł
+      </span>
+      zaoszczedzone rocznie
+    </p>
+    <p class="mb-2">
+      <span class="font-bold">
+        {{ deep }} m3
+      </span>
+      wiecej w wodach głębinowych
+    </p>
   </section>
 </template>
 
