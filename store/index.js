@@ -72,14 +72,11 @@ const actions = {
 
 export const mutations = {
   setUser (state, token) {
-    debugger
-    // localStorage.setItem(TOKEN_ITEM_KEY, token)
     Cookie.set('auth', token)
     state.user = token
   },
 
   logout () {
-    // localStorage.removeItem(TOKEN_ITEM_KEY)
     Cookie.remove('auth')
     window.location.reload()
   }
