@@ -14,8 +14,15 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://js.arcgis.com/4.17/esri/themes/light/main.css'
+      }
+    ],
+    script: {
+      src: 'https://js.arcgis.com/4.17/'
+    }
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -24,6 +31,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/maps.client'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -45,5 +53,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+  },
+
+  publicRuntimeConfig: {
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY
   }
 }
