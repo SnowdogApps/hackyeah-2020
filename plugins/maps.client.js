@@ -5,10 +5,11 @@ export default function ({ $config }, inject) {
   let map = null
   let measureTool = null
   let area = null
+  let autocomplete = null
 
   addScript()
 
-  inject('maps', { showMap, getMeasuredArea, endMeasurement })
+  inject('maps', { showMap, getMeasuredArea, endMeasurement, initAutocomplete, geolocate })
 
   function addScript () {
     const script = document.createElement('script')
@@ -28,6 +29,30 @@ export default function ({ $config }, inject) {
     }
   }
 
+  function initAutocomplete (element) {
+    autocomplete = new window.google.maps.places.Autocomplete(element)
+    autocomplete.bindTo('bounds', map)
+    autocomplete.setFields(
+      ['address_components', 'geometry', 'name'])
+
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace()
+      if (!place.geometry) {
+        console.log('Returned place contains no geometry')
+        return
+      }
+      const bounds = new window.google.maps.LatLngBounds()
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport)
+      } else {
+        bounds.extend(place.geometry.location)
+      }
+      map.fitBounds(bounds)
+    })
+  }
+
   function showMap (canvas, lat, lng) {
     if (mapLoaded) {
       renderMap(canvas, lat, lng)
@@ -39,14 +64,13 @@ export default function ({ $config }, inject) {
   function renderMap (canvas, lat, lng) {
     const position = new window.google.maps.LatLng(lat, lng)
     const mapOptions = {
-      zoom: 19,
+      zoom: 15,
       center: position,
       disableDefaultUI: true,
       zoomControl: true
     }
 
     map = new window.google.maps.Map(canvas, mapOptions)
-
     addMeasureTool()
   }
 
@@ -72,23 +96,12 @@ export default function ({ $config }, inject) {
     return area
   }
 
-  // FALLBACK SOLUTION
-  // function addPolygon () {
-  //   const triangleCoords = [
-  //     { lat: 25.774, lng: -80.19 },
-  //     { lat: 18.466, lng: -66.118 },
-  //     { lat: 32.321, lng: -64.757 }
-  //   ]
-
-  //   const bermudaTriangle = new window.google.maps.Polygon({
-  //     paths: triangleCoords,
-  //     strokeColor: '#FF0000',
-  //     strokeOpacity: 0.5,
-  //     strokeWeight: 2,
-  //     fillColor: '#FF0000',
-  //     fillOpacity: 0.3,
-  //     editable: true
-  //   })
-  //   bermudaTriangle.setMap(map)
-  // }
+  function geolocate () {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const coords = new window.google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        map.setCenter(coords)
+      })
+    }
+  }
 }
