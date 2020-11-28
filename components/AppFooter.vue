@@ -58,7 +58,7 @@
     <div class="mt-16">
       <hr class="mb-8">
       <p class="text-sm text-gray-600">
-        2020 © Waterise. All rights reserved.
+        2020 © Wateca. All rights reserved.
       </p>
     </div>
   </footer>
