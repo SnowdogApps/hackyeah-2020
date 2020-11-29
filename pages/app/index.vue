@@ -1,5 +1,5 @@
 <template>
-  <div class="app mb-8">
+  <div class="app mb-8 mt-16">
     <section class="font-sans container m-auto text-center py-8">
       <h1 for="tagline" class="uppercase tracking-wide font-bold text-gray-700 border-b-2 border-gray-200 pb-4">
         Formularz profilujący
@@ -108,7 +108,7 @@ const usage = [
 ]
 
 export default {
-  layout: 'clean',
+  // layout: 'clean',
   data: () => ({
     activeStep: 0,
     users: 1,
