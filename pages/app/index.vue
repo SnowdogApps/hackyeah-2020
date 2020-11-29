@@ -37,7 +37,7 @@
 
     <form-results v-if="activeStep === 2 && results" :results="results" />
 
-    <div class="flex items-center justify-center mx-auto max-w-screen-sm mt-8 border-t-1 border-gray-200 pt-4">
+    <div class="flex items-center justify-center mx-auto max-w-screen-sm mt-8 border-t-1 border-gray-200 pt-4 pb-32">
       <app-button
         v-if="activeStep !== 0"
         class="mr-2"
