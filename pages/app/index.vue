@@ -17,14 +17,14 @@
 
     <vertical-list
       v-if="activeStep === 0"
-      heading="Do czego wykorzystujesz wodę"
+      heading="Do czego planujesz używać wodę deszczową"
       :items="usage"
       @toggle="handleToggle"
     />
 
     <div v-if="activeStep === 1">
       <h2 class="mt-2 mb-2 font-medium max-w-sm mx-auto text-center">
-        Uzupełnij ponizsze pola:
+        Uzupełnij ponizsze pola
       </h2>
       <section class="font-sans text-sm rounded w-full max-w-xl mx-auto mb-8 px-8 pt-6 pb-8">
         <app-input id="users" v-model="users" label="Liczba mieszkańców domu korzystających z toalety" />
@@ -37,7 +37,7 @@
 
     <form-results v-if="activeStep === 2 && results" :results="results" />
 
-    <div class="flex items-center justify-center mx-auto max-w-screen-sm mt-8 border-t-2 border-gray-200 pt-4">
+    <div class="flex items-center justify-center mx-auto max-w-screen-sm mt-8 border-t-1 border-gray-200 pt-4">
       <app-button
         v-if="activeStep !== 0"
         class="mr-2"
@@ -52,13 +52,6 @@
         @click.native="next"
       >
         Dalej
-      </app-button>
-
-      <app-button
-        v-if="activeStep === steps.length - 1"
-        @click.native="getTank"
-      >
-        Dobierz zbiornik
       </app-button>
     </div>
   </div>
@@ -95,13 +88,6 @@ const usage = [
     id: 'flushing',
     name: 'Spłukiwanie toalety',
     description: 'Na spłukiwanie toalet przeciętny Polak zuzywa 100l wody rocznie.',
-    selected: true,
-    disabled: true
-  },
-  {
-    id: 'garden',
-    name: 'Podlewanie ogródka',
-    description: 'Kwiatki się cieszą gdy woda sie leje.',
     selected: false,
     disabled: false
   },
@@ -109,6 +95,13 @@ const usage = [
     id: 'lawn',
     name: 'Podlewanie trawnika',
     description: 'Mokry trawnik to zielony trawnik.',
+    selected: false,
+    disabled: false
+  },
+  {
+    id: 'garden',
+    name: 'Podlewanie ogródka',
+    description: 'Kwiatki się cieszą gdy woda sie leje.',
     selected: false,
     disabled: false
   }
@@ -120,7 +113,7 @@ export default {
     activeStep: 0,
     users: 1,
     yearlyRainfall: 530,
-    roof: 81.5,
+    roof: 150,
     lawn: 0,
     garden: 0,
     steps,
@@ -168,11 +161,6 @@ export default {
       const { roof, lawn, garden, users, yearlyRainfall } = this
       calculator.calcSuggestedCapacity(roof, yearlyRainfall, garden, lawn, users)
       this.results = calculator.getResults()
-    },
-
-    getTank () {
-      //  TODO
-      this.$router.push('/')
     }
   }
 }

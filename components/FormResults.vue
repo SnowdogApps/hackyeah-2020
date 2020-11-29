@@ -2,26 +2,26 @@
   <section class="font-sans text-sm rounded w-full max-w-xl mx-auto mb-8 px-8 pt-6 pb-8 font-bold">
     <div class="border-b-2 border-gray-200 mb-6 pb-6">
       <p class="text-black">
-        Sugerowana pojemność zbiornika (litry):
+        Sugerowana pojemność zbiornika
       </p>
       <span class="text-blue-500 text-2xl">
-        {{ formatNumber(results.suggestedCapacity) }}
+        {{ formatNumber(results.suggestedCapacity) }} litry
       </span>
     </div>
     <div class="border-b-2 border-gray-200 mb-6 pb-6">
       <p class="text-black">
-        Szacowane zapotrzebowanie na wodę (litry / rok):
+        Szacowane zapotrzebowanie na wodę
       </p>
       <span class="text-blue-500 text-2xl">
-        {{ formatNumber(results.estimatedUsage) }}
+        {{ formatNumber(results.estimatedUsage) }} litry / rok
       </span>
     </div>
     <div>
       <p class="text-black">
-        Szacowana ilość zebranej deszczówki (litry / rok):
+        Szacowana ilość zebranej deszczówki
       </p>
       <span class="text-blue-500 text-2xl">
-        {{ formatNumber(results.rainfallCollected) }}
+        {{ formatNumber(results.rainfallCollected) }} litry / rok
       </span>
     </div>
   </section>
@@ -38,7 +38,7 @@ export default {
 
   methods: {
     formatNumber (val) {
-      return val.toFixed(2)
+      return Math.ceil(val.toFixed(2))
     }
   }
 }
