@@ -1,8 +1,8 @@
 <template>
   <div class="app mb-8 mt-16">
     <section class="font-sans container m-auto text-center py-8">
-      <h1 for="tagline" class="uppercase tracking-wide font-bold text-gray-700 border-b-2 border-gray-200 pb-4">
-        Formularz profilujący
+      <h1 for="tagline" class="uppercase tracking-wide font-bold text-gray-700 pb-4">
+        Kalkulator
       </h1>
     </section>
 
@@ -17,7 +17,7 @@
 
     <vertical-list
       v-if="activeStep === 0"
-      heading="Do czego planujesz używać wodę deszczową"
+      heading="Do czego planujesz używać wodę deszczową?"
       :items="usage"
       @toggle="handleToggle"
     />
