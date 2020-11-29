@@ -85,23 +85,23 @@ const buildingTypes = [
 
 const usage = [
   {
-    id: 'flushing',
-    name: 'Spłukiwanie toalety',
-    description: 'Na spłukiwanie toalet przeciętny Polak zuzywa 100l wody rocznie.',
-    selected: false,
-    disabled: false
-  },
-  {
     id: 'lawn',
     name: 'Podlewanie trawnika',
     description: 'Mokry trawnik to zielony trawnik.',
-    selected: false,
+    selected: true,
     disabled: false
   },
   {
     id: 'garden',
     name: 'Podlewanie ogródka',
     description: 'Kwiatki się cieszą gdy woda sie leje.',
+    selected: false,
+    disabled: false
+  },
+  {
+    id: 'flushing',
+    name: 'Spłukiwanie toalety',
+    description: 'Na spłukiwanie toalet przeciętny Polak zuzywa 100l wody rocznie.',
     selected: false,
     disabled: false
   }
