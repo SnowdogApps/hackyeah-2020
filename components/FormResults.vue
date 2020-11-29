@@ -10,7 +10,7 @@
     </div>
     <div class="border-b-2 border-gray-200 mb-6 pb-6">
       <p class="text-black">
-        Szacowane wykorzystanie wody (litry / rok):
+        Szacowane zapotrzebowanie na wodę (litry / rok):
       </p>
       <span class="text-blue-500 text-2xl">
         {{ formatNumber(results.estimatedUsage) }}
