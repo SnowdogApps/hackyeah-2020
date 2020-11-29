@@ -6,6 +6,5 @@
     <cause />
     <summary-banner />
     <features />
-    <cta />
   </main>
 </template>

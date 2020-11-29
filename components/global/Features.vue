@@ -35,7 +35,7 @@
           </li>
         </ul>
 
-        <nuxt-link to="/" class="inline-block px-6 py-4 bg-white text-primary rounded-md mt-8">
+        <nuxt-link to="/app" class="inline-block px-6 py-4 bg-white text-primary rounded-md mt-8">
           SPRAWDŹ INNE PORADY
         </nuxt-link>
       </div>
