@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="523" height="184" viewBox="0 0 523 184">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <text fill="#FFF" font-family="Lato-Bold, Lato" font-size="14" font-weight="bold" transform="translate(-182 -2340) translate(0 2235) translate(150 99)">
+                        <tspan x="89.237" y="14">Picie i gotowanie </tspan> <tspan x="110.111" y="35">Mycie naczyń</tspan> <tspan x="147.33" y="56">Higiena </tspan> <tspan x="155.856" y="77">Kąpiel</tspan> <tspan x="91.694" y="98">Spłukiwanie WC</tspan> <tspan x="155.282" y="119">Pranie</tspan> <tspan x="31.41" y="140">Mycie podłóg, samochodu</tspan> <tspan x="74.957" y="161">Podlewanie ogrodu</tspan> <tspan x="167.686" y="182">Inne</tspan>
+                    </text>
+                    <g transform="translate(-182 -2340) translate(0 2235) translate(150 99) translate(207 6)">
+                        <rect width="26.698" height="17" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="13">3 L</tspan>
+                        </text>
+                        <rect width="34.984" height="17" y="167" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="180">4 L</tspan>
+                        </text>
+                        <rect width="69.968" height="17" y="21" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="34">9 L</tspan>
+                        </text>
+                        <rect width="63.524" height="17" y="124" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="137">8 L</tspan>
+                        </text>
+                        <rect width="69.968" height="17" y="41" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="54">9 L</tspan>
+                        </text>
+                        <rect width="85.619" height="17" y="145" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="158">11 L</tspan>
+                        </text>
+                        <rect width="131.651" height="17" y="103" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="116">17 L</tspan>
+                        </text>
+                        <rect width="337.873" height="17" y="62" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="75">44 L</tspan>
+                        </text>
+                        <rect width="348" height="17" y="82" fill="#FFF" rx="8.5"/>
+                        <text fill="#3182CE" font-family="Lato-Medium, Lato" font-size="12" font-weight="400">
+                            <tspan x="5.524" y="95">45 L</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

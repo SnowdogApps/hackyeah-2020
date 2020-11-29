@@ -1,8 +1,10 @@
 <template>
   <main>
     <hero />
-    <estimate-slider />
-    <how-it-works />
+    <how-to-start />
+    <benefits />
+    <cause />
+    <summary-banner />
     <features />
     <cta />
   </main>

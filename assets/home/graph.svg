@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="113px" height="113px" viewBox="0 0 113 113" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>graph</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="52.5" cy="52.5" r="52.5"></circle>
+        <path d="M96.5730012,23.9587891 C87.2603052,9.51265135 71.1446084,0 52.9071401,0" id="path-3"></path>
+    </defs>
+    <g id="Workspace" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0-1-1-Lander" transform="translate(-367.000000, -2076.000000)">
+            <g id="section" transform="translate(0.000000, 2022.000000)">
+                <g id="11%-Domów-w-PL" transform="translate(371.000000, 58.000000)">
+                    <g id="Group-7">
+                        <g id="graph">
+                            <g id="Group">
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <use id="Oval" stroke="#DBECF8" stroke-width="7.02000028" xlink:href="#path-1"></use>
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <use id="Oval" stroke="#23C0F5" stroke-width="7.02000028" stroke-linecap="round" stroke-linejoin="round" xlink:href="#path-3"></use>
+                            </g>
+                            <text id="11%" font-family="Lato-Regular, Lato" font-size="36" font-weight="normal" fill="#212B36">
+                                <tspan x="20" y="66">11%</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
