@@ -1,6 +1,6 @@
 <template>
   <section-wrapper heading="Jak zacząć" class="bg-white">
-    <div class="flex justify-center items-center space-x-4 lg:flex-row flex-col">
+    <div class="flex justify-center items-center space-x-2 lg:flex-row flex-col">
       <div class="start-card">
         <needs-image class="mb-12" />
         <h3 class="uppercase font-bold text-xl text-gray">
@@ -16,10 +16,10 @@
       <div class="start-card">
         <solutions-image class="mb-12" />
         <h3 class="uppercase font-bold text-xl text-gray">
-          Definiujemy potrzeby
+          Rekomendujemy rozwiązania
         </h3>
         <p>
-          Pomożemy wypełnić ankietę dzięki której poznamy Twoje potrzeby.
+          Pokażemy rozwiązania odpowidające Twoim potrzebom i możliwościom.
         </p>
       </div>
 
@@ -28,10 +28,10 @@
       <div class="start-card">
         <savings-image class="mb-12" />
         <h3 class="uppercase font-bold text-xl text-gray">
-          Definiujemy potrzeby
+          Pokazujemy oszczędnośći
         </h3>
         <p>
-          Pomożemy wypełnić ankietę dzięki której poznamy Twoje potrzeby.
+          Pokazujemy oszczędności zarówno te ekologiczne jak i ekonomiczne.
         </p>
       </div>
     </div>
@@ -56,6 +56,6 @@ export default {
 
 <style>
 .start-card {
-  @apply flex flex-col w-96 items-center p-16 my-4 md:my-0;
+  @apply flex flex-col w-96 items-center p-12 my-4 md:my-0;
 }
 </style>
