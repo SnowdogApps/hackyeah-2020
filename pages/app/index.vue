@@ -48,9 +48,17 @@
 
       <app-button
         v-if="activeStep !== steps.length - 1"
+        class="mr-2"
         @click.native="next"
       >
         Dalej
+      </app-button>
+
+      <app-button
+        v-if="activeStep === steps.length - 1"
+        @click.native="getTank"
+      >
+        Dobierz zbiornik
       </app-button>
     </div>
   </div>
@@ -160,6 +168,11 @@ export default {
       const { roof, lawn, garden, users, yearlyRainfall } = this
       calculator.calcSuggestedCapacity(roof, yearlyRainfall, garden, lawn, users)
       this.results = calculator.getResults()
+    },
+
+    getTank () {
+      //  TODO
+      this.$router.push('/')
     }
   }
 }
