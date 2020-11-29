@@ -5,31 +5,39 @@
       type="range"
       min="0"
       max="100"
-      class="md:w-1/2 my-4 w-2/3"
+      class="lg:w-1/2 my-4 w-2/3"
     >
 
-    <div class="font-bold text-3xl mb-4">
-      {{ percent }}%
+    <div class="text-4xl my-4 text-gray-600">
+      <span class="font-bold">{{ percent }}%</span>  zebranej deszczówki
     </div>
 
-    <p class="mb-2">
-      <span class="font-bold">
-        {{ garden }} litry
-      </span>
-      wody na podlewanie ogrodu
-    </p>
-    <p class="mb-2">
-      <span class="font-bold">
-        {{ money }} zł
-      </span>
-      zaoszczedzone rocznie
-    </p>
-    <p class="mb-2">
-      <span class="font-bold">
-        {{ deep }} m3
-      </span>
-      wiecej w wodach głębinowych
-    </p>
+    <div class="flex w-full flex-col lg:flex-row justify-center lg:space-x-20 space-y-10 lg:space-y-0 mt-16 lg:mt-8 items-center">
+      <div class="w-52">
+        <span class="block font-bold text-4xl mb-4">
+          {{ garden }} litry
+        </span>
+        <span class="text-2xl font-light">
+          wody na podlewanie ogrodu
+        </span>
+      </div>
+      <div class="w-52">
+        <span class="block font-bold text-4xl mb-4">
+          {{ money }} zł
+        </span>
+        <span class="text-2xl font-light">
+          zaoszczędzone rocznie
+        </span>
+      </div>
+      <div class="w-52">
+        <span class="block font-bold text-4xl mb-4">
+          {{ deep }} m³
+        </span>
+        <span class="text-2xl font-light">
+          więcej w wodach głębinowych
+        </span>
+      </div>
+    </div>
   </section>
 </template>
 

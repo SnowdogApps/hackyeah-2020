@@ -317,12 +317,12 @@
     </filter>
   </defs>
   <g transform="translate(1950.456 5248.5)">
-    <rect width="1" height="225" transform="translate(-1285.5 -5047.5)" fill="#dfe3e8" />
+    <!-- <rect width="1" height="225" transform="translate(-1285.5 -5047.5)" fill="#dfe3e8" />
     <rect width="1" height="225" transform="translate(-1255.5 -5167.5)" fill="#dfe3e8" opacity="0.5" />
     <rect width="1" height="225" transform="translate(-1189.5 -5112.5)" fill="#dfe3e8" />
     <rect width="1" height="225" transform="translate(-1091.5 -5138.5)" fill="#dfe3e8" opacity="0.5" />
     <rect width="1" height="225" transform="translate(-1075.5 -5040.5)" fill="#dfe3e8" />
-    <rect width="1" height="225" transform="translate(-1132.5 -5189.5)" fill="#dfe3e8" />
+    <rect width="1" height="225" transform="translate(-1132.5 -5189.5)" fill="#dfe3e8" /> -->
     <g transform="translate(-1950.5 -4962.067)">
       <path
         d="M847.9,82.732c-35.467,16.382-70.248,7.339-114.45-22.181-130.3-87.026-222.523-75.217-343.934,3.359-25.868,16.742-67.626,44.576-137.624,24.769C149.45,59.69,44.091,89,0,169.643H1161.727c-33.066-63-156.751-159.454-313.828-86.911"
@@ -591,7 +591,7 @@
       transform="translate(-1613.921 -4796.976)"
       fill="#6ce3f0"
     />
-    <g transform="translate(-1109.5 -5110.5)">
+    <!-- <g transform="translate(-1109.5 -5110.5)">
       <g transform="matrix(1, 0, 0, 1, -840.96, -138)" filter="url(#ad)">
         <circle cx="34.5" cy="34.5" r="34.5" transform="translate(840.96 138)" fill="#fff" />
       </g>
@@ -674,6 +674,6 @@
         >
           <tspan x="-13.725" y="0">10%</tspan>
         </text></g>
-    </g>
+    </g> -->
   </g>
 </svg>

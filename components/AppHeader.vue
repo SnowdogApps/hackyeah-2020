@@ -1,13 +1,13 @@
 <template>
   <header
     id="navbar"
-    class="w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-6"
+    :class="['w-full bg-transparent fixed top-0 left-0 z-50 px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-6', { 'header-condensed': headerCondensed }]"
   >
     <nav class="flex items-center justify-between">
       <div class="">
-        <a href="/fair-rate-mortgage/">
+        <nuxt-link to="/">
           <logo-image />
-        </a>
+        </nuxt-link>
       </div>
 
       <div class="block sm:hidden">
@@ -20,12 +20,14 @@
 
       <div class="hidden sm:flex">
         <ul class="flex flex-col sm:flex-row">
-          <li><a href="#" class="sm:px-4 py-2 block">Rates</a></li>
-          <li><a href="#" class="sm:px-4 py-2 sm:hidden lg:block">About Us</a></li>
-          <li><a href="#" class="sm:px-4 py-2 sm:hidden md:block">Resources</a></li>
-          <li><a href="#" class="sm:px-4 py-2 sm:hidden md:block">FAQs</a></li>
-          <li><a href="#" class="sm:px-4 py-2 block text-blue-600 border border-gray-400 rounded-lg ml-4">Login</a></li>
-          <li><a href="#" class="sm:px-4 py-2 block bg-blue-600 text-white rounded-lg ml-4">Get Started</a></li>
+          <nuxt-link
+            v-for="(item, index) in items"
+            :key="index"
+            :to="item.to"
+            class="sm:px-4 py-2 block"
+          >
+            {{ item.text }}
+          </nuxt-link>
         </ul>
       </div>
     </nav>
@@ -35,9 +37,47 @@
 <script>
 import LogoImage from '~/assets/logo.svg?inline'
 
+const items = [
+  {
+    text: 'Kalkulator',
+    to: '/app'
+  },
+  {
+    text: 'Partnerzy',
+    to: '/partners'
+  },
+  {
+    text: 'Logowanie',
+    to: '/login'
+  }
+]
+
 export default {
   components: {
     LogoImage
+  },
+
+  data: () => ({
+    items,
+    headerCondensed: false
+  }),
+
+  mounted () {
+    //  TODO: remove listener beforeDestoryed / throttle this
+    window.addEventListener('scroll', () => {
+      const { scrollY } = window
+      this.headerCondensed = scrollY > 50
+    })
+  },
+
+  methods: {
+
   }
 }
 </script>
+
+<style>
+.header-condensed {
+  @apply bg-white shadow;
+}
+</style>
