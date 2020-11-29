@@ -9,7 +9,7 @@ export default function ({ $config }, inject) {
 
   addScript()
 
-  inject('maps', { showMap, getMeasuredArea, endMeasurement, initAutocomplete, geolocate })
+  inject('maps', { showMap, getMeasuredArea, endMeasurement, initAutocomplete, geolocate, startMeasurements })
 
   function addScript () {
     const script = document.createElement('script')
@@ -64,10 +64,12 @@ export default function ({ $config }, inject) {
   function renderMap (canvas, lat, lng) {
     const position = new window.google.maps.LatLng(lat, lng)
     const mapOptions = {
-      zoom: 15,
+      zoom: 18,
       center: position,
       disableDefaultUI: true,
-      zoomControl: true
+      zoomControl: true,
+      mapTypeId: 'satellite',
+      tilt: 0
     }
 
     map = new window.google.maps.Map(canvas, mapOptions)
@@ -86,6 +88,10 @@ export default function ({ $config }, inject) {
       // eslint-disable-next-line no-unused-vars
       area = result.area
     })
+  }
+
+  function startMeasurements () {
+    measureTool.start()
   }
 
   function endMeasurement () {
