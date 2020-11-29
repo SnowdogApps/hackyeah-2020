@@ -9,9 +9,9 @@ class Calculator {
   waterReserveFactor = 0.08
 
   // 530 is default for Poland
-  calcLitersPerYear (roofArea, yearlyRainfall = 530) {
+  calcRainfallCollected (roofArea, yearlyRainfall = 530) {
     this.rainfallCollected = roofArea * yearlyRainfall * 0.7 // how much in the year you can collect
-    return this.rainfallCollectedPerYear
+    return this.rainfallCollected
   }
 
   calcYearlyFlushing (peopleCount) {
@@ -26,16 +26,26 @@ class Calculator {
 
   calcYearlyLawnWatering (lawnArea) {
     this.lawnWatering = lawnArea * 5 * 120
+    return this.lawnWatering
   }
 
-  calcEstimatedUsage () {
-    this.estimatedUsage = this.gardenWatering + this.lawnWatering + this.gardenWatering
+  calcEstimatedUsage (gardenArea, lawnArea, peopleCount) {
+    this.estimatedUsage = this.calcYearlyFlushing(peopleCount) + this.calcYearlyGardenWatering(gardenArea) + this.calcYearlyLawnWatering(lawnArea)
     return this.estimatedUsage
   }
 
-  calcSuggestedCapacity () {
-    this.suggestedCapacity = (this.rainfallCollected + this.estimatedUsage) / 2 * this.waterReserveFactor
+  calcSuggestedCapacity (roofArea, yerlyRainfall, gardenArea, lawnArea, peopleCount) {
+    this.suggestedCapacity = (this.calcRainfallCollected(roofArea, yerlyRainfall) + this.calcEstimatedUsage(gardenArea, lawnArea, peopleCount)) / 2 * this.waterReserveFactor
     return this.suggestedCapacity
+  }
+
+  getResults () {
+    const { rainfallCollected, estimatedUsage, suggestedCapacity } = this
+    return {
+      rainfallCollected,
+      estimatedUsage,
+      suggestedCapacity
+    }
   }
 }
 

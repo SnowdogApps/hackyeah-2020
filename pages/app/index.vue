@@ -8,21 +8,34 @@
 
     <stepper v-model="activeStep" :steps="steps" class="mb-4" />
 
-    <horizontal-list
+    <!-- <horizontal-list
       v-if="activeStep === 0"
       heading="Typ zabudowy"
       :items="buildingTypes"
       @select="selectBuilding"
-    />
+    /> -->
 
     <vertical-list
-      v-if="activeStep === 1"
-      heading="Produkty / usługi"
+      v-if="activeStep === 0"
+      heading="Do czego wykorzystujesz wodę"
       :items="usage"
       @toggle="handleToggle"
     />
 
-    <user-form v-if="activeStep === 2" />
+    <div v-if="activeStep === 1">
+      <h2 class="mt-2 mb-2 font-medium max-w-sm mx-auto text-center">
+        Uzupełnij ponizsze pola:
+      </h2>
+      <section class="font-sans text-sm rounded w-full max-w-xl mx-auto mb-8 px-8 pt-6 pb-8">
+        <app-input id="users" v-model="users" label="Liczba mieszkańców domu korzystających z toalety" />
+        <app-input id="yearlyRainfall" v-model="yearlyRainfall" label="Suma rocznych opadów (l)" />
+        <area-input id="roof" v-model="roof" label="Powierzchnia dachu" />
+        <area-input v-if="hasLawn" id="lawn" v-model="lawn" label="Powierzchnia trawnika" />
+        <area-input v-if="hasGarden" id="garden" v-model="garden" label="Powierzchnia ogródka" />
+      </section>
+    </div>
+
+    <form-results v-if="activeStep === 2 && results" :results="results" />
 
     <div class="flex items-center justify-center mx-auto max-w-screen-sm mt-8 border-t-2 border-gray-200 pt-4">
       <app-button
@@ -30,11 +43,11 @@
         class="mr-2"
         @click.native="prev"
       >
-        Wroc
+        Wróć
       </app-button>
 
       <app-button
-        v-if="activeStep !== steps.length - 1 && activeStep !== 0"
+        v-if="activeStep !== steps.length - 1"
         @click.native="next"
       >
         Dalej
@@ -44,53 +57,87 @@
 </template>
 
 <script>
-// import calculator from '~/utils/calculator'
+import calculator from '~/utils/calculator'
+
+const steps = [
+  'Zuzycie',
+  'Dane',
+  'Podsumowanie'
+]
+const buildingTypes = [
+  {
+    name: 'Blok/kamienica',
+    description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
+    selected: false
+  },
+  {
+    name: 'Dom',
+    description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
+    selected: false
+  },
+  {
+    name: 'Gospodarstwo',
+    description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
+    selected: false
+  }
+]
+
+const usage = [
+  {
+    id: 'flushing',
+    name: 'Spłukiwanie toalety',
+    description: 'Na spłukiwanie toalet przeciętny Polak zuzywa 100l wody rocznie.',
+    selected: true,
+    disabled: true
+  },
+  {
+    id: 'garden',
+    name: 'Podlewanie ogródka',
+    description: 'Kwiatki się cieszą gdy woda sie leje.',
+    selected: false,
+    disabled: false
+  },
+  {
+    id: 'lawn',
+    name: 'Podlewanie trawnika',
+    description: 'Mokry trawnik to zielony trawnik.',
+    selected: false,
+    disabled: false
+  }
+]
 
 export default {
   layout: 'clean',
   data: () => ({
     activeStep: 0,
-    steps: [
-      'Zabudowa',
-      'Zuzycie',
-      'Dane',
-      'Podsumowanie'
-    ],
-    buildingTypes: [
-      {
-        name: 'Blok/kamienica',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
-        selected: false
-      },
-      {
-        name: 'Dom',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
-        selected: false
-      },
-      {
-        name: 'Gospodarstwo',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
-        selected: false
-      }
-    ],
-    usage: [
-      {
-        name: 'Podlewanko',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
-        selected: true
-      },
-      {
-        name: 'Myćko',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
-        selected: false
-      },
-      {
-        name: 'Pićko',
-        description: 'Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.',
-        selected: false
-      }
-    ]
+    users: 1,
+    yearlyRainfall: 530,
+    roof: 81.5,
+    lawn: 0,
+    garden: 0,
+    steps,
+    buildingTypes,
+    usage,
+    results: null
   }),
+
+  computed: {
+    hasLawn () {
+      return this.usage.find(x => x.id === 'lawn').selected
+    },
+
+    hasGarden () {
+      return this.usage.find(x => x.id === 'garden').selected
+    }
+  },
+
+  watch: {
+    activeStep (newVal) {
+      if (newVal === this.steps.length - 1) {
+        this.calc()
+      }
+    }
+  },
 
   methods: {
     handleToggle (itemIndex) {
@@ -109,9 +156,10 @@ export default {
       this.activeStep++
     },
 
-    submit () {
-      // lawnArea, gardenArea, peopleCount, roofArea, yearlyRainfall
-      // const result = calculator.
+    calc () {
+      const { roof, lawn, garden, users, yearlyRainfall } = this
+      calculator.calcSuggestedCapacity(roof, yearlyRainfall, garden, lawn, users)
+      this.results = calculator.getResults()
     }
   }
 }
